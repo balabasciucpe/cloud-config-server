@@ -1,13 +1,13 @@
 
 resilience4j.circuitbreaker:
 instances:
- getDefaultEntity: #A
-registerHealthIndicator: true #B
-ringBufferSizeInClosedState: 5 #C
-ringBufferSizeInHalfOpenState: 3 #D
-waitDurationInOpenState: 10s #E
-failureRateThreshold: 50 #F
-recordExceptions: #G
+ getDefaultEntity: #numele metodei noastre definite in CircuitBreaker name
+registerHealthIndicator: true #register with actuator health
+ringBufferSizeInClosedState: 5 #la 5 bune e in closed state  ===== 5/failureRateThreshold
+ringBufferSizeInHalfOpenState: 3 #la 3 fail-uri e in open state
+waitDurationInOpenState: 10s #cat asteapta fara sa ia cereri cand e deschis CircuitBreakerul
+failureRateThreshold: 12 #cate fail-uri sa ia pana deschide circuitBreakerul si implicit fallback-ul, daca e acolo
+recordExceptions: #exceptiile pe care le prindem
 - org.springframework.web.client.HttpServerErrorException
 - java.io.IOException
 - java.util.concurrent.TimeoutException

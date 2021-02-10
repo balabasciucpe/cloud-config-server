@@ -1,1 +1,14 @@
 
+resilience4j.circuitbreaker:
+instances:
+ getDefaultEntity: #A
+registerHealthIndicator: true #B
+ringBufferSizeInClosedState: 5 #C
+ringBufferSizeInHalfOpenState: 3 #D
+waitDurationInOpenState: 10s #E
+failureRateThreshold: 50 #F
+recordExceptions: #G
+- org.springframework.web.client.HttpServerErrorException
+- java.io.IOException
+- java.util.concurrent.TimeoutException
+- org.springframework.web.client.ResourceAccessException
